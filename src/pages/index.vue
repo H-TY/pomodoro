@@ -34,7 +34,6 @@ const STATUS = {
   PAUSE: 2
 }
 const status = ref(STATUS.STOP)
-status.value = STATUS.PAUSE
 
 const list = useListStore()
 const { currentItem, items, timeleft } = storeToRefs(list)
