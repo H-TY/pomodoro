@@ -13,7 +13,7 @@
               <th>選擇</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="bg-ggrey-darken-3">
             <tr v-for="alarm in alarms" :key="alarm.id">
               <td>{{ alarm.name }}</td>
               <td>

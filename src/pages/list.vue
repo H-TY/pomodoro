@@ -2,28 +2,28 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">代辦事項</h1>
+        <h1 class="text-center text-teal-darken-4">代辦事項</h1>
       </v-col>
       <v-col cols="12">
         <v-text-field variant="outlined" label="新增事項" clearable append-icon="mdi-plus" @keydown.enter="onInputSubmit" @click:append="onInputSubmit" v-model="newItem" :rules="[rules.required, rules.length]" ref="newItemTextField">
         </v-text-field>
-        <v-table>
+        <v-table class="bg-green-darken-4">
           <thead>
-            <tr>
+            <tr class="bg-green-lighten-3">
               <th>名稱</th>
               <th>操作</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, i) in items" :key="item.id">
+            <tr class="bg-transparent border-double" v-for="(item, i) in items" :key="item.id">
               <td>
                 <span v-show="!item.edit">{{ item.name }}</span>
                 <v-text-field v-show="item.edit" v-model="item.model" :rules="[rules.required, rules.length]" autofocus @keydown.enter="onEditInputSubmit(item.id, i)" ref="editItemTextField"></v-text-field>
               </td>
               <td>
                 <template v-if="!item.edit">
-                  <v-btn icon="mdi-pencil" @click="editItem(item.id)"></v-btn>
-                  <v-btn icon="mdi-delete" @click="delItem(item.id)"></v-btn>
+                  <v-btn class="bg-transparent" icon="mdi-pencil" @click="editItem(item.id)" flat></v-btn>
+                  <v-btn class="bg-transparent" icon="mdi-delete" @click="delItem(item.id)" flat></v-btn>
                 </template>
                 <template v-else>
                   <v-btn icon="mdi-check" @click="onEditInputSubmit(item.id, i)"></v-btn>
@@ -34,22 +34,23 @@
           </tbody>
         </v-table>
       </v-col>
+      <v-divider class="mt-5"></v-divider>
       <v-col cols="12">
-        <h1 class="text-center">完成事項</h1>
+        <h1 class="text-center text-amber-darken-4 mt-3">完成事項</h1>
       </v-col>
       <v-col cols="12">
-        <v-table>
+        <v-table class="bg-brown">
           <thead>
-            <tr>
-            <th>名稱</th>
-            <th>操作</th>
-          </tr>
+            <tr class="bg-amber-lighten-4">
+              <th>名稱</th>
+              <th>操作</th>
+            </tr>
           </thead>
           <tbody>
             <tr v-for="item in finishedItems" :key="item.id">
               <td>{{ item.name }}</td>
               <td>
-                <v-btn icon="mdi-delete" @click="delFinishItem(item.id)"></v-btn>
+                <v-btn class="bg-transparent" icon="mdi-delete" @click="delFinishItem(item.id)" flat></v-btn>
               </td>
             </tr>
           </tbody>

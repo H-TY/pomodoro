@@ -1,7 +1,8 @@
 <template>
-  <v-app>
-    <v-app-bar>
+  <v-app class="bg-grey-lighten-5">
+    <v-app-bar class="bg-light-green-darken-4">
       <v-container class="d-flex align-center">
+        <v-icon icon="mdi-alarm" color="light-green-lighten-3" size="large" start></v-icon>
         <v-app-bar-title>蕃茄鐘</v-app-bar-title>
         <v-btn prepend-icon="mdi-home" to="/">首頁</v-btn>
         <v-btn prepend-icon="mdi-clipboard-list" to="/list">事項</v-btn>

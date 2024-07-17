@@ -4,7 +4,9 @@ export const useSettingsStore = defineStore('settings', {
   state: () => ({
     alarms: [
       { id: 1, name: '鬧鐘', file: new URL('@/assets/alarm.mp3', import.meta.url).href },
-      { id: 2, name: 'yay', file: new URL('@/assets/yay.mp3', import.meta.url).href }
+      { id: 2, name: 'yay', file: new URL('@/assets/yay.mp3', import.meta.url).href },
+      { id: 3, name: 'fanfare', file: new URL('@/assets/fanfare.wav', import.meta.url).href },
+      { id: 4, name: 'trailer', file: new URL('@/assets/trailer.wav', import.meta.url).href }
     ],
     selectedAlarm: 1
   }),

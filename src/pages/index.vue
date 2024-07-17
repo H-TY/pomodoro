@@ -1,15 +1,36 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12">
-        <h1>目前事項 {{ currentText }}</h1>
-        <h2>剩餘時間 {{ currentTime }}</h2>
+      <v-col class="pa-0" cols="12">
+        <v-img class="position-absolute opacity-10" src="https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="100%" cover></v-img>
+        <h1 class="text-center mt-5">目前事項：<span class="text-pink-accent-3">{{ currentText }}</span>
+        </h1>
+        <div class="text-center my-5">
+          <v-progress-circular :model-value="timeleft * 20" :rotate="360" :size="150" :width="15" color="pink-accent-3">
+            <template v-slot:default>
+              <v-row class="flex-column">
+                <v-col class="pa-0">
+                  <p>剩餘時間</p>
+                </v-col>
+                <v-col class="pa-0">
+                  <h1>{{ currentTime }}</h1>
+                </v-col>
+              </v-row>
+            </template>
+          </v-progress-circular>
+        </div>
       </v-col>
-      <v-col cols="12">
-        <v-btn icon="mdi-play" @click="startTimer" :disabled="status === STATUS.COUNTING || (currentItem.length === 0 && items.length === 0)"></v-btn>
-        <v-btn icon="mdi-pause" @click="pauseTimer" :disabled="status !== STATUS.COUNTING"></v-btn>
-        <v-btn icon="mdi-skip-next" @click="finishTimer" :disabled="currentItem.length === 0"></v-btn>
-      </v-col>
+      <v-row class="text-center justify-center">
+        <v-col cols="2">
+          <v-btn icon="mdi-play" @click="startTimer" :disabled="status === STATUS.COUNTING || (currentItem.length === 0 && items.length === 0)"></v-btn>
+        </v-col>
+        <v-col cols="2">
+          <v-btn icon="mdi-pause" @click="pauseTimer" :disabled="status !== STATUS.COUNTING"></v-btn>
+        </v-col>
+        <v-col cols="2">
+          <v-btn icon="mdi-skip-next" @click="finishTimer" :disabled="currentItem.length === 0"></v-btn>
+        </v-col>
+      </v-row>
     </v-row>
   </v-container>
 </template>
